@@ -14,6 +14,7 @@ class Controller:
         cromosomi = self._model.getCromosomiModel()
 
 
+
     def handle_graph(self, e):
         pass
 
