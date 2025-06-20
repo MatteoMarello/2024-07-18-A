@@ -10,6 +10,10 @@ class Controller:
         # the model, which implements the logic of the program and holds the data
         self._model = model
 
+    def fillDD1(self):
+        cromosomi = self._model.getCromosomiModel()
+
+
     def handle_graph(self, e):
         pass
 

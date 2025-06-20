@@ -4,6 +4,26 @@ from model.interaction import Interaction
 
 
 class DAO():
+    @staticmethod
+    def get_cromosomi():
+        cnx = DBConnect.get_connection()
+        result = []
+        if cnx is None:
+            print("Connessione fallita")
+        else:
+            cursor = cnx.cursor()
+            query = """select distinct g.Chromosome
+from genes_small.genes as g
+order by g.Chromosome DESC"""
+            cursor.execute(query)
+
+            for row in cursor:
+                result.append(*row)
+
+            cursor.close()
+            cnx.close()
+        return result
+
 
     @staticmethod
     def get_all_genes():
@@ -13,7 +33,7 @@ class DAO():
             print("Connessione fallita")
         else:
             cursor = cnx.cursor(dictionary=True)
-            query = """SELECT * 
+            query = """SELECT distinct  
                     FROM genes"""
             cursor.execute(query)
 
